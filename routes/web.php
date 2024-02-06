@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'home');
+Route::view('/events', 'events.index')->name('events.index');
+Route::view('/events/{slug}', 'events.show')->name('events.show');
 
 Route::middleware('auth')->group(function() {
     Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
