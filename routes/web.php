@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
+Route::get('/', HomeController::class)->name('home');
 Route::view('/events', 'events.index')->name('events.index');
 Route::view('/events/{slug}', 'events.show')->name('events.show');
+Route::redirect('/login', '/admin/login')->name('login');
 
 Route::middleware('auth')->group(function() {
     Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
