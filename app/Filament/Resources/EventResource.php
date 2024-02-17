@@ -73,8 +73,7 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_published')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_published'),
             ])
             ->filters([
                 //

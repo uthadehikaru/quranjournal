@@ -1,8 +1,8 @@
 @extends('layouts.web')
 @section('content')
 <x-breadcrumbs :breadcrumbs="[
-    '/' => 'Home',
-    '/events' => 'Acara',
+    '/' => 'Beranda',
+    '/acara' => 'Acara',
 ]" />
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-4 flex-row justify-center">

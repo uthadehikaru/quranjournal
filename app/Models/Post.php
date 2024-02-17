@@ -16,6 +16,11 @@ class Post extends Model
         return 'slug';
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
+
     public function category():BelongsTo
     {
         return $this->belongsTo(Category::class);

@@ -16,14 +16,14 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->word(2);
+        $title = fake()->sentence();
         return [
             'title' => $title,
             'slug' => str($title)->slug(),
-            'content' => fake()->sentence(),
+            'content' => '<p>'.collect(fake()->paragraphs(5))->join('<p></p>', '</p>'),
             'is_published' => fake()->boolean(70),
             'published_at' => fake()->dateTimeThisYear(),
-            'thumbnail' => 'thumbnails/'.fake()->image(storage_path('app/public/thumbnails'), 400, 400, null, false),
+            'thumbnail' => null,
             'category_id' => 1,
         ];
     }

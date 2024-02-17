@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Livewire\LoginForm;
+use App\Livewire\RegisterForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
-Route::resource('posts', PostController::class)->only(['index','show']);
-Route::resource('events', EventController::class)->only(['index','show']);
-Route::resource('products', ProductController::class)->only(['index','show']);
+Route::view('/about', 'about')->name('about');
+Route::resource('artikel', PostController::class)->only(['index','show']);
+Route::resource('acara', EventController::class)->only(['index','show']);
+Route::resource('produk', ProductController::class)->only(['index','show']);
 Route::get('/login', LoginForm::class)->name('login');
+Route::get('/register', RegisterForm::class)->name('register');
 Route::get('/logout', function(){
     Auth::logout();
-    return redirect()->route('home');
+    return redirect()->route('login')->with('message','Berhasil keluar');
 })->name('logout');
 
 Route::middleware('auth')->group(function() {

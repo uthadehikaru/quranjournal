@@ -14,7 +14,7 @@ class EventController extends Controller
     {
         $data['posts'] = Post::where('is_published',true)
         ->whereRelation('category','slug','acara')
-        ->latest()->paginate();
+        ->latest()->paginate(9);
         return view('events.index', $data);
     }
 
@@ -37,9 +37,9 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $event)
+    public function show(Post $acara)
     {
-        $data['post'] = $event;
+        $data['post'] = $acara;
         return view('events.show', $data);
     }
 

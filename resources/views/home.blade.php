@@ -2,31 +2,68 @@
 @section('content')
 <!-- start hero -->
 <section class="text-gray-600 body-font">
-    <div class="container mx-auto flex p-2 md:flex-row flex-col items-center">
-        <img class="object-cover object-center rounded w-full" alt="hero"
-            src="{{ asset('assets/banner.jpg') }}">
+    
+
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{{ asset('assets/bannerjournal1.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{{ asset('assets/bannerjournal2.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{{ asset('assets/bannerjournal3.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
     </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-1 h-1 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-1 h-1 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-1 h-1 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-2 h-2 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-2 h-2 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
 </section>
 <!-- end hero -->
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-8 flex-row justify-around items-center">
         @foreach ($categories as $category)
-            <div class="flex items-center bg-secondary-lighter rounded-full h-20 w-20 text-center align-middle">
+            <a href="{{ route($category->slug.'.index') }}" class="flex items-center bg-secondary-lighter 
+            rounded-full h-20 w-20 text-center align-middle hover:opacity-75">
             <span class="w-full text-sm">{{ $category->title }}</span>
-            </div>
+            </a>
         @endforeach
     </div>
 </section>
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-4 flex-row justify-between">
         <h2 class="text-xl text-primary-default p-2 font-bold">Acara Akan Datang</h2>
-        <a href="{{ route('posts.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
+        <a href="{{ route('acara.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
           Lihat semua
         </a>
     </div>
     <div class="container mx-auto grid grid-cols-3 gap-4 px-2 justify-around items-center">
         @foreach ($events as $event)
-        <x-post-card :post="$event" />
+        <x-post-card :post="$event" route="events" />
         @endforeach
     </div>
 </section>
@@ -48,26 +85,26 @@
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-2 flex-row justify-between">
         <h2 class="text-xl text-primary-default p-2 font-bold">Buku dan Printable</h2>
-        <a href="{{ route('products.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
+        <a href="{{ route('produk.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
           Lihat semua
         </a>
     </div>
     <div class="container mx-auto grid grid-cols-3 gap-4 px-2 justify-around items-center">
         @foreach ($products as $product)
-        <x-post-card :post="$product" />
+        <x-post-card :post="$product" route="products" />
         @endforeach
     </div>
 </section>
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-2 flex-row justify-between">
         <h2 class="text-xl text-primary-default p-2 font-bold">Artikel</h2>
-        <a href="{{ route('posts.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
+        <a href="{{ route('artikel.index') }}" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
           Lihat semua
         </a>
     </div>
     <div class="container mx-auto grid grid-cols-3 gap-4 px-2 justify-around items-center">
         @foreach ($articles as $article)
-        <x-post-card :post="$article" />
+        <x-post-card :post="$article" route="posts" />
         @endforeach
     </div>
 </section>

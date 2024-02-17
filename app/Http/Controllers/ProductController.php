@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         $data['posts'] = Post::where('is_published',true)
         ->whereRelation('category','slug','produk')
-        ->latest()->paginate();
+        ->latest()->paginate(9);
         return view('products.index', $data);
     }
 
@@ -37,9 +37,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $product)
+    public function show(Post $produk)
     {
-        $data['post'] = $product;
+        $data['post'] = $produk;
         return view('products.show', $data);
     }
 

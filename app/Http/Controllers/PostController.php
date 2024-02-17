@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $data['posts'] = Post::where('is_published',true)
         ->whereRelation('category','slug','artikel')
-        ->latest()->paginate();
+        ->latest()->simplePaginate(9);
         return view('posts.index', $data);
     }
 
@@ -37,9 +37,9 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Post $artikel)
     {
-        $data['post'] = $post;
+        $data['post'] = $artikel;
         return view('posts.show', $data);
     }
 
