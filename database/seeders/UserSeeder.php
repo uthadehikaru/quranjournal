@@ -14,8 +14,14 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         \App\Models\User::factory()->create([
+            'name' => 'Super User',
+            'email' => 'superuser@thequranjournal.id',
+            'password' => Hash::make('supersecret'),
+            'role' => 'superuser',
+        ]);
+        \App\Models\User::factory()->create([
             'name' => 'Admin',
-            'email' => 'admin@laravel.test',
+            'email' => 'admin@thequranjournal.id',
             'password' => Hash::make('secret'),
             'role' => 'admin',
         ]);

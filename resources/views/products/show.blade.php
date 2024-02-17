@@ -2,7 +2,7 @@
 @section('content')
 <x-breadcrumbs :breadcrumbs="[
     '/' => 'Home',
-    '/events' => 'Acara',
+    '/products' => 'Produk',
 ]" />
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-4 flex-row justify-center">

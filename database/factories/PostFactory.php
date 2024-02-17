@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'content' => fake()->sentence(),
             'is_published' => fake()->boolean(70),
             'published_at' => fake()->dateTimeThisYear(),
+            'thumbnail' => 'thumbnails/'.fake()->image(storage_path('app/public/thumbnails'), 400, 400, null, false),
             'category_id' => 1,
         ];
     }
