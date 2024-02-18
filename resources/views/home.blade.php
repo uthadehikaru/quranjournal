@@ -1,27 +1,21 @@
 @extends('layouts.web')
 @section('content')
-<!-- start hero -->
+@if($banners)
 <section class="text-gray-600 body-font">
-    
-
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        @foreach ($banners as $banner)
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('assets/bannerjournal1.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="{{ asset('storage/banner/'.$banner->value) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{ $banner->key }}">
         </div>
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('assets/bannerjournal2.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('assets/bannerjournal3.png') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
+        @endforeach
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-1 h-1 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-1 h-1 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-1 h-1 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        @for ($i=0;$i<$banners->count();$i++)
+        <button type="button" class="w-1 h-1 rounded-full" aria-current="true" aria-label="Slide {{ $i }}" data-carousel-slide-to="{{ $i }}"></button>
+        @endfor
     </div>
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -43,6 +37,7 @@
 </div>
 
 </section>
+@endif
 <!-- end hero -->
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-8 flex-row justify-around items-center">
@@ -74,6 +69,7 @@
           Follow Us
         </a>
     </div>
+    @if($video_homepage)
     <div class="container mx-auto flex flex-row justify-around items-center">
     <iframe width="100%" height="230px" class="p-2 border rounded"
     src="https://www.youtube.com/embed/PdsJhBJIEfg?si=Uc6VmVSkDqUMlfnw" 
@@ -81,6 +77,7 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
     web-share" allowfullscreen></iframe>
     </div>
+    @endif
 </section>
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-2 flex-row justify-between">
