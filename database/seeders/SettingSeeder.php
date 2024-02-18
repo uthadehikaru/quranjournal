@@ -36,6 +36,7 @@ class SettingSeeder extends Seeder
             'group' => 'general'
         ]);
         
+        Storage::disk('banner')->put('test','test');
         copy(public_path('assets/bannerjournal1.png'), storage_path('app/public/banner/bannerjournal1.png'));
         Setting::firstOrCreate([
             'key' => 'banner1',
