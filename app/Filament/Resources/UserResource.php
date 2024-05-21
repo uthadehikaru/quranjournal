@@ -26,6 +26,9 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('gender')
+                    ->options(['pria'=>'Pria','wanita'=>'Wanita'])
+                    ->required(),
                 Forms\Components\TextInput::make('phone')
                     ->required()
                     ->maxLength(255),
@@ -33,6 +36,8 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('city')
+                    ->label('Kota Domisili'),
                 Forms\Components\Select::make('role')
                     ->required()
                     ->options([
@@ -53,9 +58,13 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('gender')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('city')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()

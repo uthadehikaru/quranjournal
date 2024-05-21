@@ -11,7 +11,9 @@
         
         <button class="mt-2 bg-blue-500 text-white text-sm p-2 rounded" type="submit" wire:loading.attr="disabled"
         wire:loading.class="opacity-75">
-            Login
+            Login <div wire:loading>
+                <x-loading />
+            </div>
         </button>
         <a href="{{ route('register') }}" class="text-blue-500 text-xs underline">belum punya akun? daftar disini</a>
     </form>

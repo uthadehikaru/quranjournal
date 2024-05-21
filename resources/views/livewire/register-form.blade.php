@@ -8,7 +8,9 @@
         
         <button class="mt-2 bg-blue-500 text-white text-sm p-2 rounded" type="submit" wire:loading.attr="disabled"
         wire:loading.class="opacity-75">
-            Register
+            Register <div wire:loading>
+                <x-loading />
+            </div>
         </button>
         <a href="{{ route('login') }}" class="text-yellow-500 text-xs underline">kembali ke login</a>
     </form>

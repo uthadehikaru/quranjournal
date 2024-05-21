@@ -47,7 +47,7 @@ class LoginForm extends Component implements HasForms
             if($user->role=='admin' || $user->role=='superuser')
                return redirect()->route('filament.admin.pages.dashboard');
 
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }else
             $this->addError('auth','Gagal, pastikan email dan password sesuai');
     }
