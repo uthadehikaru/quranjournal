@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function(){
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
     
     Route::middleware('verified')->group(function(){
-        Route::view('dashboard', 'dashboard')->name('dashboard');
+        Route::get('dashboard', DashboardController::class)->name('dashboard');
     });
 });
 Route::middleware(['auth', 'signed'])->group(function(){
