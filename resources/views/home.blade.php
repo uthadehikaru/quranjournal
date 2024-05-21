@@ -5,11 +5,18 @@
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        @if(count($banners)==1)
+        @php $banner = $banners[0] @endphp
+        <div class="">
+            <img src="{{ asset('storage/banner/'.$banner->value) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{ $banner->key }}">
+        </div>
+        @else
         @foreach ($banners as $banner)
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img src="{{ asset('storage/banner/'.$banner->value) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{ $banner->key }}">
         </div>
         @endforeach
+        @endif
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
