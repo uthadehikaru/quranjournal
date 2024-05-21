@@ -78,11 +78,7 @@
     </div>
     @if($video_homepage)
     <div class="container mx-auto flex flex-row justify-around items-center">
-    <iframe width="100%" height="230px" class="p-2 border rounded"
-    src="https://www.youtube.com/embed/PdsJhBJIEfg?si=Uc6VmVSkDqUMlfnw" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
-    web-share" allowfullscreen></iframe>
+    {!! $video_homepage->value !!}
     </div>
     @endif
 </section>
