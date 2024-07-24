@@ -81,6 +81,11 @@
     {!! $video_homepage->value !!}
     </div>
     @endif
+    @if($about)
+    <div class="px-2 text-sm">
+    {!! $about->value !!}
+    </div>
+    @endif
 </section>
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-2 flex-row justify-between">

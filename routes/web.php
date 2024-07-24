@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
-Route::view('/about', 'about')->name('about');
+Route::get('about', AboutController::class)->name('about');
 Route::resource('artikel', PostController::class)->only(['index','show']);
 Route::resource('acara', EventController::class)->only(['index','show']);
 Route::resource('produk', ProductController::class)->only(['index','show']);

@@ -13,6 +13,7 @@ class HomeController extends Controller
     {
         $data['banners'] = Setting::where('group','banner')->get();
         $data['video_homepage'] = Setting::where('key','video_homepage')->first();
+        $data['about'] = Setting::where('key','about')->first();
         $data['categories'] = Category::take(3)->get();
         $data['events'] = Post::take(3)
         ->latest('published_at')
