@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Livewire\LoginForm;
@@ -29,6 +30,7 @@ Route::get('about', AboutController::class)->name('about');
 Route::resource('artikel', PostController::class)->only(['index','show']);
 Route::resource('acara', EventController::class)->only(['index','show']);
 Route::resource('produk', ProductController::class)->only(['index','show']);
+Route::get('page/{slug}', PageController::class)->name('pages.show');
 Route::get('/login', LoginForm::class)->name('login');
 Route::get('/register', RegisterForm::class)->name('register');
 Route::middleware('auth')->group(function(){

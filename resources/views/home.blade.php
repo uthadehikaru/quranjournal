@@ -48,6 +48,12 @@
 <!-- end hero -->
 <section class="text-gray-600 body-font">
     <div class="container mx-auto flex py-8 flex-row justify-around items-center">
+        @foreach ($pages as $page)
+            <a href="{{ route('pages.show', $page->slug) }}" class="flex items-center bg-secondary-lighter 
+            rounded-full h-20 w-20 text-center align-middle hover:opacity-75">
+            <span class="w-full text-sm">{{ $page->title }}</span>
+            </a>
+        @endforeach
         @foreach ($categories as $category)
             <a href="{{ route($category->slug.'.index') }}" class="flex items-center bg-secondary-lighter 
             rounded-full h-20 w-20 text-center align-middle hover:opacity-75">
@@ -79,11 +85,6 @@
     @if($video_homepage)
     <div class="container mx-auto flex flex-row justify-around items-center">
     {!! $video_homepage->value !!}
-    </div>
-    @endif
-    @if($about)
-    <div class="px-2 text-sm">
-    {!! $about->value !!}
     </div>
     @endif
 </section>
