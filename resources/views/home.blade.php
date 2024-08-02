@@ -54,6 +54,10 @@
             <span class="w-full text-sm">{{ $page->title }}</span>
             </a>
         @endforeach
+    </div>
+</section>
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex py-8 flex-row justify-around items-center">
         @foreach ($categories as $category)
             <a href="{{ route($category->slug.'.index') }}" class="flex items-center bg-secondary-lighter 
             rounded-full h-20 w-20 text-center align-middle hover:opacity-75">
