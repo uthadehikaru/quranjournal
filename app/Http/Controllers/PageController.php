@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function __invoke($slug)
     {
-        $data['page'] = Page::published()->where('slug',$slug)->first();
+        $data['page'] = Page::published()->where('slug',$slug)->firstOrFail();
         return view('pages.show', $data);
     }
 }

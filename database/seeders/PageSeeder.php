@@ -16,14 +16,17 @@ class PageSeeder extends Seeder
         Page::create([
             'title' => 'Profile',
             'slug' => 'profile',
+            'is_published' => true,
         ]);
         Page::create([
             'title' => 'Member',
             'slug' => 'member',
+            'is_published' => true,
         ]);
         Page::create([
             'title' => 'Kontribusi',
             'slug' => 'kontribusi',
+            'is_published' => true,
         ]);
     }
 }

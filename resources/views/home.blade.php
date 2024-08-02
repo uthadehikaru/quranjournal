@@ -77,7 +77,7 @@
 </section>
 <section class="text-gray-600 body-font py-8">
     <div class="container mx-auto flex py-4 flex-row justify-between">
-        <h2 class="text-xl text-primary-default px-2 font-bold">Tentang Qur'an Journal</h2>
+        <a href="{{ route('pages.show','profile') }}"><h2 class="text-xl text-primary-default px-2 font-bold">Tentang Qur'an Journal</h2></a>
         <a href="https://instagram.com/thequranjournal.id" class="text-sm bg-secondary-lighter text-primary-default p-2 mx-2 border border-secondary-default rounded">
           Follow Us
         </a>
