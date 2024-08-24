@@ -17,10 +17,10 @@ class PostSeeder extends Seeder
     {
         $index = 0;
         foreach(Category::all() as $category){
-            $thumbnail ='thumbnails/'.$category->slug.'.jpg';
-            copy(public_path('assets/'.$category->slug.'.jpg'), storage_path('app/public/'.$thumbnail));
-            $data['thumbnail'] = $thumbnail;
-            Post::factory(20)->for($category)->create($data);
+            // $thumbnail ='thumbnails/'.$category->slug.'.jpg';
+            // copy(public_path('assets/'.$category->slug.'.jpg'), storage_path('app/public/'.$thumbnail));
+            // $data['thumbnail'] = $thumbnail;
+            Post::factory(20)->for($category)->create();
         }
     }
 }

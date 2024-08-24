@@ -28,7 +28,8 @@ class CategoryResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->disabledOn('edit'),
                 Forms\Components\Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -48,8 +49,6 @@ class CategoryResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
             ])
             ->filters([
